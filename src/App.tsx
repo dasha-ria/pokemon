@@ -9,6 +9,10 @@ function App() {
     return parts.at(-2);
   };
 
+  const upperCase = (e) => {
+    return e.charAt(0).toUpperCase() + e.slice(1);
+  };
+
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon?limit=20")
       .then((response) => response.json())
@@ -28,7 +32,7 @@ function App() {
             mx="auto"
           ></Image>
           <Heading my="4" size="lg">
-            {pokemon.name}
+            {upperCase(pokemon.name)}
           </Heading>
         </Box>
       ))}
