@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />}></Route>
-          <Route path="/pokemon" element={<Pokemon />}></Route>
+          <Route path="/pokemon/:id" element={<Pokemon />}></Route>
         </Routes>
       </BrowserRouter>
     </ChakraProvider>
