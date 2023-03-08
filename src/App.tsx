@@ -27,7 +27,7 @@ function App() {
   }, []);
 
   return (
-    <Flex gap="10" justify="center" wrap="wrap" mt="8">
+    <Flex gap="10" justify="center" wrap="wrap" mt="8" cursor="pointer">
       {pokemons.map((pokemon) => (
         <Box
           maxW="420px"
