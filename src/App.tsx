@@ -1,29 +1,17 @@
 import { Box, Flex, Heading, Image } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getPokemonIdFromUrl } from "./getPokemonIdFromUrl";
+import { usePokemons } from "./hooks/pokemon";
+import { upperCase } from "./upperCase";
 
 function App() {
-  const [pokemons, setPokemons] = useState([]);
-
-  const pokemonId = (url) => {
-    const parts = url.split("/");
-    return parts.at(-2);
-  };
-
-  const upperCase = (e) => {
-    return e.charAt(0).toUpperCase() + e.slice(1);
-  };
-
-  useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=20")
-      .then((response) => response.json())
-      .then((data) => setPokemons(data.results));
-  }, []);
+  const { data: pokemons } = usePokemons();
 
   return (
     <Flex gap="10" justify="center" wrap="wrap" mt="8">
       {pokemons.map((pokemon) => (
-        <Link to={`/pokemon/${pokemonId(pokemon.url)}`}>
+        <Link to={`/pokemon/${getPokemonIdFromUrl(pokemon.url)}`}>
           <Box
             maxW="420px"
             bg="white"
@@ -33,7 +21,7 @@ function App() {
             cursor="pointer"
           >
             <Image
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonId(
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${getPokemonIdFromUrl(
                 pokemon.url
               )}.png`}
               alt="pokemon"
