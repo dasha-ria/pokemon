@@ -58,6 +58,22 @@ type UsePokemonData = {
   weight: number;
 };
 
+// type PokemonColor = {
+//   id: number;
+//   name: string;
+//   names: Array<{
+//     language: {
+//       name: string;
+//       url: string;
+//     };
+//     name: string;
+//   }>;
+//   pokemon_species: Array<{
+//     name: string;
+//     url: string;
+//   }>;
+// };
+
 export function usePokemons() {
   const [pokemons, setPokemons] = useState<UsePokemonsData>([]);
 
